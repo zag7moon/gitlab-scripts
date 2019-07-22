@@ -16,9 +16,9 @@ const getSubgroups = async (id) => {
   }
 }
 
-const getGroupProjects = async (id) => {
+const getGroupProjects = async ({id, page, perPage}) => {
   try {
-    return await client.get(`/groups/${id}/projects`)
+    return await client.get(`/groups/${id}/projects`, { params: { page, per_page: perPage } })
   } catch (e) {
     console.error('Failed while group projects fetching', e)
   }
