@@ -1,7 +1,7 @@
+// const userProjects = require('./features/removeUserFromGroupProjects')
 
+// userProjects('Nikitosnik')
 
-const userProjects = require('./features/removeUserFromGroupProjects')
+const createNewProject = require('./features/createNewProject/createNewProject');
 
-
-userProjects('Nikitosnik')
-
+createNewProject('sheesh', 'https://github.com/ElemeFE/element.git', 'private');
