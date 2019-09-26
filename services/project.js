@@ -16,8 +16,16 @@ const removeUser = async (projectId, userId) => {
   }
 }
 
+const createProject = async (name, import_url) => {
+  try {
+    return await client.post('/projects/', { name, import_url, visibility: 'public' })
+  } catch (e) {
+    console.error('Failed while trying to create project', e)
+  }
+}
 
 module.exports = {
   getProjectUsers,
-  removeUser
+  removeUser,
+  createProject
 }
