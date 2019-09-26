@@ -3,29 +3,13 @@ const chalk = require("chalk");
 const figlet = require("figlet");
 
 const userProjects = require('./features/removeUserFromGroupProjects/removeUserFromGroupProjects.js')
-
 const createNewProject = require('./features/createNewProject/createNewProject');
+const {types} = require('./config');
 
 const createCustomProject = async (name) => {
   const {PROJECT_URL} = await inquirer.prompt({type: "input", name: "PROJECT_URL", message: "Введите import_url"});
 
   return await createNewProject(name, PROJECT_URL)
-}
-
-const createProject = (name, type) => {
-  switch (type) {
-    case 'react':
-      return createNewProject(name, 'https://github.com/SibdevPro/react-typescript-stub');
-
-    case 'vue':
-        return console.log('vue гавно даже ссылки нет');
-
-    case 'django':
-      return createNewProject(name, 'https://github.com/SibdevPro/backend-stub');
-
-    case 'custom':
-      return createCustomProject(name)
-  }
 }
 
 const createRepository = async () => {
@@ -37,7 +21,13 @@ const createRepository = async () => {
     choices: ["vue", "react", "django", "custom"]
   });
 
-  const response = await createProject(PROJECT_NAME, PROJECT_TYPE);
+  let response;
+
+  if (PROJECT_TYPE === types.custom) {
+    response = await createCustomProject(PROJECT_NAME);
+  } else {
+    response = await createNewProject(PROJECT_NAME, types[PROJECT_TYPE]);
+  }
 
   console.log('Ваша ссылка евгений', `https://gitlab.com/${response.path_with_namespace}`);
 }
