@@ -1,5 +1,5 @@
-const {getGroupProjects} = require('../services/group')
-const {getProjectUsers, removeUser} = require('../services/project')
+const {getGroupProjects} = require('../../services/group')
+const {getProjectUsers, removeUser} = require('../../services/project')
 
 module.exports = async (username, groupId = 4076980) => {
   const perPage = 100
