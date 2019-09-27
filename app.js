@@ -1,20 +1,26 @@
 const inquirer = require("inquirer");
 const chalk = require("chalk");
+const gradient = require('gradient-string');
 const figlet = require("figlet");
 
 const {removeUserFromGroupProjectsCli} = require('./features/removeUserFromGroupProjects')
 const {createNewProjectCli} = require('./features/createNewProject');
 
-const run = async () => {
+const cliPreview = () => {
+  console.log(chalk.blue('■'.repeat(55)));
+  console.log(' '.repeat(55));
   console.log(
-    chalk.blue(
-      figlet.textSync("hrchat cli", {
-        font: "banner",
-        horizontalLayout: "default",
-        verticalLayout: "default"
-      })
-    )
+    gradient.vice(figlet.textSync("SIBDEV cli", {
+      font: "big",
+      horizontalLayout: "default",
+      verticalLayout: "default"
+    }))
   );
+  console.log(chalk.blue('■'.repeat(55)));
+}
+
+const run = async () => {
+  cliPreview();
 
   const {ACTION_TYPE} = await inquirer.prompt({
     type: "list",
