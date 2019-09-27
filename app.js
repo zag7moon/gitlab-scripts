@@ -5,6 +5,7 @@ const figlet = require("figlet");
 
 const {removeUserFromGroupProjectsCli} = require('./features/removeUserFromGroupProjects')
 const {createNewProjectCli} = require('./features/createNewProject');
+const {addUserToProjectCli} = require('./features/addUserToProject');
 
 const cliPreview = () => {
   console.log(chalk.blue('■'.repeat(55)));
@@ -26,7 +27,7 @@ const run = async () => {
     type: "list",
     name: "ACTION_TYPE",
     message: "Действие: ",
-    choices: ["Удаление пользователя", "Создание репозитория"]
+    choices: ["Удаление пользователя", "Создание репозитория", "Добавить пользователя в репозиторий"]
   });
 
   switch (ACTION_TYPE) {
@@ -35,6 +36,9 @@ const run = async () => {
 
     case 'Создание репозитория':
       return createNewProjectCli();
+
+    case 'Добавить пользователя в репозиторий':
+      return addUserToProjectCli();
   }
 };
 

@@ -16,6 +16,30 @@ const removeUser = async (projectId, userId) => {
   }
 }
 
+const addUser = async (projectId, user_id, access_level) => {
+  try {
+    return await client.post(`/projects/${projectId}/members/`, { user_id, access_level })
+  } catch (e) {
+    console.error('Failed while adding user', e)
+  }
+}
+
+const getUsersByUsername = async (username) => {
+  try {
+    return await client.get(`/users/?username=${username}`)
+  } catch (e) {
+    console.error('Failed while getting users', e)
+  }
+}
+
+const getProjectById = async (projectId) => {
+  try {
+    return await client.get(`/projects/${projectId}`)
+  } catch (e) {
+    console.error('Failed while getting project', e)
+  }
+}
+
 const createProject = async (name, import_url, visibility) => {
   try {
     return await client.post('/projects/', { name, import_url, visibility })
@@ -27,5 +51,8 @@ const createProject = async (name, import_url, visibility) => {
 module.exports = {
   getProjectUsers,
   removeUser,
+  addUser,
+  getUsersByUsername,
+  getProjectById,
   createProject
 }
