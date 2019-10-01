@@ -16,5 +16,5 @@ module.exports = {
         Maintainer: 40,
         maintainer: 40
     },
-    sibdevNamespace: 4076980
+    namespace_id: 4076980
 }
