@@ -40,9 +40,9 @@ const getProjectById = async (projectId) => {
   }
 }
 
-const createProject = async (name, import_url, visibility) => {
+const createProject = async (name, namespace_id, import_url, visibility) => {
   try {
-    return await client.post('/projects/', { name, import_url, visibility })
+    return await client.post('/projects/', { name, import_url, visibility, namespace_id })
   } catch (e) {
     console.error('Failed while trying to create project', e)
   }
