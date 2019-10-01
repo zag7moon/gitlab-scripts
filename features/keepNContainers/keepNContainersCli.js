@@ -7,11 +7,9 @@ module.exports = async () => {
   const repository = await getRepositories(PROJECT_ID);
   const registries = await getRegistries(PROJECT_ID, repository.data[0].id);
 
-  const registriesTimestamps = registries.data
-    .map(registry => parseInt(registry.name.slice(registry.name.indexOf('-') + 1)))
-    .sort((a, b) => b - a);
-  const sortedRegistries = registriesTimestamps
-    .map(timestamp => registries.data.find(registry => registry.name.includes(timestamp)));
+  const getTime = str => parseInt(str.slice(str.indexOf('-') + 1));
+
+  const sortedRegistries = registries.data.slice().sort((a, b) => getTime(b.name) - getTime(a.name));
 
   sortedRegistries.slice(3).forEach(registry => {
     removeRegistry(PROJECT_ID, repository.data[0].id, registry.name);
