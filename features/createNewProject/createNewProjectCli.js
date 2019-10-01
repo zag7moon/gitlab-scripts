@@ -1,5 +1,5 @@
 module.exports = async () => {
-  const {types} = require('../../config');
+  const {types, sibdevNamespace} = require('../../config');
   const inquirer = require("inquirer");
   const {addUserToProjectCli} = require('../addUserToProject');
   const {createNewProject} = require('./');
@@ -35,9 +35,9 @@ module.exports = async () => {
   let response;
 
   if (PROJECT_TYPE === types.custom) {
-    response = await createCustomProject(PROJECT_NAME);
+    response = await createCustomProject(PROJECT_NAME, sibdevNamespace);
   } else {
-    response = await createNewProject(PROJECT_NAME, types[PROJECT_TYPE]);
+    response = await createNewProject(PROJECT_NAME, sibdevNamespace, types[PROJECT_TYPE]);
   }
 
   console.log('Ваша ссылка евгений', `https://gitlab.com/${response.path_with_namespace}`);

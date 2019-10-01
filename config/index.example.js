@@ -15,5 +15,6 @@ module.exports = {
         developer: 30,
         Maintainer: 40,
         maintainer: 40
-    }
+    },
+    sibdevNamespace: 4076980
 }

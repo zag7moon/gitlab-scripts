@@ -1,7 +1,7 @@
 const {createProject} = require('../../services/project')
 
-module.exports = async (projectName, copyFrom, visibility) => {
-  const response = await createProject(projectName, copyFrom, visibility)
+module.exports = async (projectName, namespace, copyFrom, visibility) => {
+  const response = await createProject(projectName, namespace, copyFrom, visibility)
 
   return response.data;
 }
