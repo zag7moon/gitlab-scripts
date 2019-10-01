@@ -10,6 +10,7 @@ const {types, accessLevels} = require('./config');
 const {removeUserFromGroupProjectsCli} = require('./features/removeUserFromGroupProjects')
 const {createNewProjectCli, createNewProject} = require('./features/createNewProject');
 const {addUserToProjectCli, addUserToProject} = require('./features/addUserToProject');
+const {keepNContainersCli} = require('./features/keepNContainers');
 const {getUsersByUsername} = require('./services/project');
 
 const cliPreview = () => {
@@ -32,7 +33,7 @@ const run = async () => {
     type: "list",
     name: "ACTION_TYPE",
     message: "Действие: ",
-    choices: ["Удаление пользователя", "Создание репозитория", "Добавить пользователя в репозиторий"]
+    choices: ["Удаление пользователя", "Создание репозитория", "Добавить пользователя в репозиторий", "Очистить ненужные контейнеры"]
   });
 
   switch (ACTION_TYPE) {
@@ -44,6 +45,9 @@ const run = async () => {
 
     case 'Добавить пользователя в репозиторий':
       return addUserToProjectCli();
+    
+    case 'Очистить ненужные контейнеры':
+      return keepNContainersCli();
   }
 
 };
