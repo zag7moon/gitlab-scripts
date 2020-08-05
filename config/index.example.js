@@ -4,7 +4,9 @@ module.exports = {
     types: {
         react: 'https://github.com/SibdevPro/react-typescript-stub',
         django: 'https://github.com/SibdevPro/backend-stub',
-        vue: 'https://github.com/SibdevPro/vue-stub'
+        vue: 'https://github.com/SibdevPro/vue-stub',
+        hrchat_backend: 'https://github.com/SibdevPro/hrchat-backend-stub',
+        custom: 'custom'
     },
     accessLevels: {
         Guest: 10,

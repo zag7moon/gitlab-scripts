@@ -29,7 +29,7 @@ module.exports = async () => {
     type: "list",
     name: "PROJECT_TYPE",
     message: "Проект",
-    choices: ["vue", "react", "django", "custom"]
+    choices: Object.keys(types)
   });
 
   let response;
@@ -40,7 +40,7 @@ module.exports = async () => {
     response = await createNewProject(PROJECT_NAME, namespace_id, types[PROJECT_TYPE]);
   }
 
-  console.log('Ваша ссылка евгений', `https://gitlab.com/${response.path_with_namespace}`);
+  console.log('Ваша ссылка:', `https://gitlab.com/${response.path_with_namespace}`);
 
   addUser(response.id);
 }
